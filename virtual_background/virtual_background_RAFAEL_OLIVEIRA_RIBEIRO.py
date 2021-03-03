@@ -62,7 +62,6 @@ while True:
 	inv_mask = cv2.bitwise_not(mask)
 	
 	cv2.imshow('Mask', mask)
-	cv2.imshow('Inverted_mask', inv_mask)
 	
 	# Obtain foreground based on the mask
 	frameB, frameG, frameR = cv2.split(frame)
