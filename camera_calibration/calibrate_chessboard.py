@@ -46,7 +46,13 @@ for fname, rvec, tvec in zip(images, rvecs, tvecs):
     print("Translation vector:\n",tvec,'\n')
     
     ext = cv2.hconcat((r, tvec)) #compose the matrix of extrinsic parameters [R|t]
-    print('Extrinsic Matrix:\n', ext,'\n')
+    #print('Extrinsic Matrix:\n', ext,'\n')
+
+    p = np.matmul(mtx,ext) # compute the projection matrix P = K[R|t]
+    print('Projection Matrix:\n', p,'\n')
+
+    neg_rc = -1*np.matmul(r,tvec) #compute the center of the (world) coordinates of the image
+    print('World origin (in camera coordinates:\n',neg_rc,'\n')
     
     #Display the axes as referenced by the image
     img = cv2.imread(fname)
